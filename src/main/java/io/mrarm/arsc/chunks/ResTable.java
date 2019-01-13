@@ -60,8 +60,10 @@ public class ResTable extends ResChunk implements ResChunk.RootChunk {
 
         public Writer(ResTable chunk) {
             super(chunk);
-            for (Package pkg : chunk.packages)
-                packageWriters.add(new Package.Writer(pkg));
+            if (chunk.packages != null) {
+                for (Package pkg : chunk.packages)
+                    packageWriters.add(new Package.Writer(pkg));
+            }
         }
 
         @Override
@@ -140,8 +142,10 @@ public class ResTable extends ResChunk implements ResChunk.RootChunk {
 
             public Writer(Package chunk) {
                 super(chunk);
-                for (TypeBase entry : chunk.entries)
-                    typeWriters.add(entry.createWriter(this));
+                if (chunk.entries != null) {
+                    for (TypeBase entry : chunk.entries)
+                        typeWriters.add(entry.createWriter(this));
+                }
             }
 
             private void buildKeysPool() {
@@ -372,8 +376,10 @@ public class ResTable extends ResChunk implements ResChunk.RootChunk {
 
             public Writer(Type chunk, Package.Writer packageWriter) {
                 super(chunk);
-                for (EntryBase entry : chunk.entries)
-                    entryWriters.add(entry.createWriter(packageWriter));
+                if (chunk.entries != null) {
+                    for (EntryBase entry : chunk.entries)
+                        entryWriters.add(entry.createWriter(packageWriter));
+                }
             }
 
             @Override
