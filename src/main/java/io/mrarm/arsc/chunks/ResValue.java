@@ -10,6 +10,9 @@ public abstract class ResValue {
 
     public static final byte TYPE_REFERENCE = 1;
     public static final byte TYPE_STRING = 3;
+    public static final byte TYPE_INT_DEC = 0x10;
+    public static final byte TYPE_INT_HEX = 0x11;
+    public static final byte TYPE_INT_BOOLEAN = 0x12;
     public static final byte TYPE_INT_COLOR_ARGB8 = 0x1c;
 
 
